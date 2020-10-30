@@ -1,0 +1,21 @@
+{
+  "name": "@vanguard/is-bot",
+  "version": "1.0.0",
+  "description": "Ultra fast bot/crawler detector using user agent strings.",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "rm -rf dist && rollup -c ../rollup.config.js --environment production",
+    "test": "ava",
+    "test:watch": "ava --watch"
+  },
+  "ava": {
+    "require": [
+      "esm"
+    ]
+  },
+  "devDependencies": {
+    "isbot": "^3.0.14",
+    "isbot-fast": "^1.2.0"
+  }
+}
