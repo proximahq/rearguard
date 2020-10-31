@@ -3,6 +3,7 @@ const dns = require('dns');
 const path = require('path');
 const {download} = require('../../utils');
 
+const MAX = 3072;
 const urls = [
   'https://raw.githubusercontent.com/wesbos/burner-email-providers/master/emails.txt',
   'https://gist.githubusercontent.com/adamloving/4401361/raw/temporary-email-address-domains',
@@ -92,10 +93,10 @@ const asyncFilter = async (arr, predicate) =>
     let slice = [];
 
     while (burners.length > 0) {
-      slice = burners.splice(0, 2048);
+      slice = burners.splice(0, MAX);
       tmp = await asyncFilter(slice, async burn => {
         size++;
-        if (size % 2048 === 0) console.log(`${size}/${originalsize}`);
+        if (size % MAX === 0) console.log(`${size}/${originalsize}`);
         const b = await validateMx(burn);
         if (!b.isValid) {
           // Keep logs plain

@@ -14,6 +14,12 @@ jobs:
             - v4-dependencies-
       - run: yarn install --pure-lockfile
       - run:
+          name: Download isBot data
+          command: node isBot/tools/download.js
+      - run:
+          name: Download isBurner data
+          command: node isBurner/tools/download.js
+      - run:
           name: Ava Tests
           command: yarn test
   release:
