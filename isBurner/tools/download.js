@@ -125,6 +125,7 @@ const asyncFilter = async (arr, predicate) =>
 
     if (previousCount !== validBurners.length) {
       // proceed with the rest of the circleci steps
+      console.log('> Burner providers changed, proceed with release');
       process.exit(0);
     } else {
       process.exit(1);
