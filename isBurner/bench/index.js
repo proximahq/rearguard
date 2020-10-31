@@ -1,11 +1,20 @@
 const Benchmark = require('benchmark');
-const emails = require('./emails');
+const {isEmailBurner} = require('burner-email-providers');
+
 const {isBurner} = require('../dist/index');
+
+const emails = require('./emails');
+
 const suite = new Benchmark.Suite();
 suite
-  .add('isBurner', function() {
-    emails.map(e => {
+  .add('@vanguard/is-burner', function() {
+    emails.forEach(e => {
       isBurner(e);
+    });
+  })
+  .add('burner-email-providers', function() {
+    emails.forEach(e => {
+      isEmailBurner(e);
     });
   })
   .on('cycle', event => {
