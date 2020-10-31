@@ -13,9 +13,5 @@
     "require": [
       "esm"
     ]
-  },
-  "devDependencies": {
-    "isbot": "^3.0.14",
-    "isbot-fast": "^1.2.0"
   }
 }

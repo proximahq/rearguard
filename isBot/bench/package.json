@@ -1,0 +1,12 @@
+{
+  "name": "@vanguard/is-bot",
+  "version": "1.0.0",
+  "description": "Benchmark for @vanguard/is-bot.",
+  "license": "MIT",
+  "private": false,
+  "scripts": {},
+  "devDependencies": {
+    "isbot": "^3.0.14",
+    "isbot-fast": "^1.2.0"
+  }
+}
