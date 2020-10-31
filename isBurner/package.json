@@ -8,6 +8,7 @@
     "build": "rm -rf dist && rollup -c ../rollup.config.js --environment production",
     "test": "ava",
     "test:watch": "ava --watch",
+    "publish": "yarn publish",
     "version": "yarn version --new-version $PACKAGE_VERSION --no-git-tag-version --no-commit-hooks"
   },
   "ava": {
