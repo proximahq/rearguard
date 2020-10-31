@@ -23,7 +23,7 @@
     "build": "rm -rf dist && rollup -c ../rollup.config.js --environment production",
     "test": "ava",
     "test:watch": "ava --watch",
-    "publish": "yarn publish",
+    "bump": "yarn publish --new-version $PACKAGE_VERSION",
     "version": "yarn version --new-version $PACKAGE_VERSION --no-git-tag-version --no-commit-hooks"
   },
   "ava": {

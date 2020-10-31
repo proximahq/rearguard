@@ -21,7 +21,7 @@
     "test": "ava",
     "build": "echo noop",
     "test:watch": "ava --watch --verbose --timeout=10s",
-    "publish": "yarn publish",
+    "bump": "yarn publish --new-version $PACKAGE_VERSION",
     "version": "yarn version --new-version $PACKAGE_VERSION --no-git-tag-version --no-commit-hooks"
   },
   "ava": {

@@ -32,10 +32,10 @@ jobs:
           name: Release checking
           command: |
             LATEST_COMMIT=$(git log --oneline -n 1 HEAD)
-            COMMIT_REGEX="(develop|staging|release)"
+            COMMIT_REGEX="(develop|staging|release|ci)"
 
             if [[ $LATEST_COMMIT =~ $COMMIT_REGEX ]]; then
-                echo "This is a release, kill this one!"
+                echo "This is a release or maintainance, kill this one!"
                 circleci step halt
             else
               echo "Proceed. Prepare a new release"
@@ -61,7 +61,7 @@ jobs:
       - run:
           name: Publish to NPM
           command: |
-            yarn workspaces run publish
+            PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && PACKAGE_VERSION=$PACKAGE_VERSION yarn workspaces run bump
       - run:
           name: Add git tags, releases and push
           command: |
