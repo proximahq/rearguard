@@ -1,12 +1,12 @@
-![vanguard](./assets/vanguard.svg)
+![rearguard](./assets/rearguard.svg)
 
 ## Intro.
 
-Vanguard is a minimalistic utility library made for Node.js. It provides small utility helpers that can be consumed individually, each library is handcrafted with performance and reusability in mind. .
+Rearguard is a minimalistic utility library made for Node.js. It provides small utility helpers that can be consumed individually, each library is handcrafted with performance and reusability in mind. .
 
 ## Tell me more.
 
-Vanguard exposes different libraries as individual, standalone packages.
+Rearguard exposes different libraries as individual, standalone packages.
 
 ```bash
 ├── batch    # Batch lru processing library.
@@ -20,23 +20,23 @@ Vanguard exposes different libraries as individual, standalone packages.
 Each package can get installed individually using NPM, eg:
 
 ```bash
-  npm i @vanguard/batch
-  npm i @vanguard/is-bot
-  npm i @vanguard/is-burner
-  npm i @vanguard/is-email
+  npm i @rearguard/batch
+  npm i @rearguard/is-bot
+  npm i @rearguard/is-burner
+  npm i @rearguard/is-email
 ```
 
 ## Documentation.
 
-- [@vanguard/batch](/batch)
-- [@vanguard/is-bot](/isBot)
-- [@vanguard/is-burner](/isBurner)
-- [@vanguard/is-email](/isEmail)
+- [@rearguard/batch](/batch)
+- [@rearguard/is-bot](/isBot)
+- [@rearguard/is-burner](/isBurner)
+- [@rearguard/is-email](/isEmail)
 
-## Why Vanguard?
+## Why Rearguard?
 
-Vanguard was built with performance in mind, we also wanted to provide a reusable & composable set of small packages for everyday use.
+Rearguard was built with performance in mind, we also wanted to provide a reusable & composable set of small packages for everyday use.
 
 ## Licence.
 
-Vanguard is released under the MIT license & supports modern environments.
+Rearguard is released under the MIT license & supports modern environments.

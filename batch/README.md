@@ -1,19 +1,19 @@
-# @vanguard/batch.
+# @rearguard/batch.
 
 ## Installation.
 
 ```bash
-npm i @vanguard/batch
+npm i @rearguard/batch
 ```
 
 ## Intro.
 
-`@vanguard/batch` is an LRU batching cache mechanism, it allows stacking and progressively releasing an array of data based on ticking mechanism.
+`@rearguard/batch` is an LRU batching cache mechanism, it allows stacking and progressively releasing an array of data based on ticking mechanism.
 
 ## Usage.
 
 ```javascript
-const {batchLru} = require('@vanguard/batch');
+const {batchLru} = require('@rearguard/batch');
 
 /**
  * max items: 2

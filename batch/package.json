@@ -1,9 +1,14 @@
 {
-  "name": "@vanguard/batch",
+  "name": "@rearguard/batch",
   "version": "1.0.0",
   "description": "A batch release \"cache\".",
   "license": "MIT",
   "private": false,
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/proximahq/rearguard.git"
+  },
   "scripts": {
     "test": "ava",
     "build": "echo noop",

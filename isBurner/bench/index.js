@@ -7,7 +7,7 @@ const emails = require('./emails');
 
 const suite = new Benchmark.Suite();
 suite
-  .add('@vanguard/is-burner', function() {
+  .add('@rearguard/is-burner', function() {
     emails.forEach(e => {
       isBurner(e);
     });

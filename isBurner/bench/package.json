@@ -1,7 +1,7 @@
 {
-  "name": "@vanguard/is-burner-bench",
+  "name": "@rearguard/is-burner-bench",
   "version": "1.0.0",
-  "description": "Benchmark for @vanguard/is-burner.",
+  "description": "Benchmark for @rearguard/is-burner.",
   "license": "MIT",
   "private": true,
   "scripts": {},

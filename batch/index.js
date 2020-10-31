@@ -2,7 +2,7 @@ const sigs = ['SIGINT', 'SIGTERM', 'SIGQUIT'];
 
 const batchLru = (max, ttl = 0, cb = () => {}) => {
   if (!max)
-    throw Error('vanguard/batchLru  value, of type number, greater than 0');
+    throw Error('rearguard/batchLru  value, of type number, greater than 0');
 
   function terminateAfterTimeout() {
     setTimeout(() => {

@@ -1,7 +1,7 @@
 {
-  "name": "@vanguard/is-bot-bench",
+  "name": "@rearguard/is-bot-bench",
   "version": "1.0.0",
-  "description": "Benchmark for @vanguard/is-bot.",
+  "description": "Benchmark for @rearguard/is-bot.",
   "license": "MIT",
   "private": true,
   "scripts": {},

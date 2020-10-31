@@ -6,7 +6,7 @@ const fakeEmails = new Array(100).fill('').map(() => faker.internet.email());
 const suite = new Benchmark.Suite();
 
 suite
-  .add('vanguard@is-email', function() {
+  .add('rearguard@is-email', function() {
     fakeEmails.forEach(e => {
       isEmail(e);
     });
