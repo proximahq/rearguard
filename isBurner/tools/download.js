@@ -65,6 +65,10 @@ const asyncFilter = async (arr, predicate) =>
 
 (async () => {
   try {
+    const previousCount = parseInt(
+      fs.readFileSync(path.resolve(__dirname, '..', 'COUNT.TXT')).toString(),
+    );
+
     // Download all files from resources
     console.log('> Downloading');
     const filesToDownload = await Promise.all(
@@ -119,8 +123,12 @@ const asyncFilter = async (arr, predicate) =>
       `${validBurners.length}`,
     );
 
-    // Now merge them
-    process.exit(0);
+    if (previousCount !== validBurners.length) {
+      // proceed with the rest of the circleci steps
+      process.exit(0);
+    } else {
+      process.exit(1);
+    }
   } catch (error) {
     console.log(error);
     process.exit(1);
