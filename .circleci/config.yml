@@ -66,7 +66,7 @@ jobs:
           name: Add git tags, releases and push
           command: |
             git add .
-            git commit -m "chore(misc): publish subpackages"
+            git commit --amend --no-edit -n
             git push --follow-tags origin main
 
 workflows:

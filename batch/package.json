@@ -8,6 +8,7 @@
     "test": "ava",
     "build": "echo noop",
     "test:watch": "ava --watch --verbose --timeout=10s",
+    "publish": "yarn publish",
     "version": "yarn version --new-version $PACKAGE_VERSION --no-git-tag-version --no-commit-hooks"
   },
   "ava": {
