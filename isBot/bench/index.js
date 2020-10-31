@@ -8,7 +8,7 @@ const browsers = require('../fixtures/browsers');
 
 const suite = new Benchmark.Suite();
 suite
-  .add('vanguard#isBot', function() {
+  .add('vanguard@is-bot', function() {
     crawlers.forEach(e => {
       vanguardIsBot(e);
     });

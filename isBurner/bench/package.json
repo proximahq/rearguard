@@ -1,0 +1,11 @@
+{
+  "name": "@vanguard/is-burner-bench",
+  "version": "1.0.0",
+  "description": "Benchmark for @vanguard/is-burner.",
+  "license": "MIT",
+  "private": true,
+  "scripts": {},
+  "devDependencies": {
+    "burner-email-providers": "^1.0.32"
+  }
+}
