@@ -1,38 +1,6 @@
 # Reference https://github.com/emotion-js/emotion/blob/master/.circleci/config.yml
 version: 2.1
 jobs:
-  download:
-    docker:
-      - image: circleci/node:14
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v4-dependencies-{{ checksum "yarn.lock" }}
-            # fallback to using the latest cache if no exact match is found
-            - v4-dependencies-
-      - run: yarn install --pure-lockfile
-      - run:
-          name: Get active bot list counter
-          command: PREV_COUNT=$(cat ./isBurner/COUNT.txt  | awk '{$1=$1};1');
-      - run:
-          name: Download bot list
-          command: node isBot/tools/download
-      - run:
-          name: Download emails
-          command: node isBurner/tools/download
-      - run:
-          name: Check
-          command: |
-            CURRENT_COUNT=$(cat ./isBurner/COUNT.txt  | awk '{$1=$1};1');
-            if [ "$PREV_COUNT" -eq "$CURRENT_COUNT" ]; then
-              echo "No active burners added!"
-              circleci step halt
-            else
-              echo 'Build and release'
-            fi;
-
   test:
     docker:
       - image: circleci/node:14
@@ -46,8 +14,8 @@ jobs:
             - v4-dependencies-
       - run: yarn install --pure-lockfile
       - run:
-          name: Ava Tests per workspace
-          command: yarn workspaces run test
+          name: Ava Tests
+          command: yarn test
   release:
     docker:
       - image: circleci/node:14
@@ -58,7 +26,7 @@ jobs:
           name: Git setup
           command: |
             git config user.email "circleci-bot@circleci.com"
-            git config user.name "Release Bot 🤖"
+            git config user.name "Proxima Release Bot 🤖"
             git remote set-url origin https://${GITHUB_TOKEN}@github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}.git
       - run:
           name: Release checking
@@ -75,7 +43,7 @@ jobs:
 
       - run:
           name: NPM setup
-          command: echo registry "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.yarnrc
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
       - restore_cache:
           keys:
             - v4-dependencies-{{ checksum "yarn.lock" }}
@@ -83,18 +51,23 @@ jobs:
             - v4-dependencies-
       - run: yarn install --pure-lockfile
       - run:
-          name: Build
-          command: yarn build
-      - run:
           name: Add changelog and stuff
           command: npx standard-version -a
+
       - run:
-          name: Add git tags and releases
-          command: git push --follow-tags origin master
-      - run:
-          name: Publish to NPM through Yarn
+          name: Setup new version to each package
           command: |
-            PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && yarn publish --new-version $PACKAGE_VERSION
+            PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && PACKAGE_VERSION=$PACKAGE_VERSION yarn workspaces run version
+      - run:
+          name: Publish to NPM
+          command: |
+            yarn workspaces run publish
+      - run:
+          name: Add git tags, releases and push
+          command: |
+            git add .
+            git commit -m "chore(misc): publish subpackages"
+            git push --follow-tags origin main
 
 workflows:
   version: 2
@@ -106,4 +79,4 @@ workflows:
             - test
           filters:
             branches:
-              only: master
+              only: main
