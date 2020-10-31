@@ -10,6 +10,15 @@
     "type": "git",
     "url": "https://github.com/proximahq/rearguard.git"
   },
+  "keywords": [
+    "utility",
+    "burner",
+    "validator",
+    "email"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "rm -rf dist && rollup -c ../rollup.config.js --environment production",
     "test": "ava",
