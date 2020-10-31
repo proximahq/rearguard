@@ -6,9 +6,18 @@
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.m.js",
+  "keywords": [
+    "utility",
+    "bot",
+    "user-agent",
+    "validator"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/proximahq/rearguard.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "rm -rf dist && rollup -c ../rollup.config.js --environment production",
