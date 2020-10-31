@@ -75,7 +75,7 @@ jobs:
             - v4-dependencies-
       - run: yarn install --pure-lockfile
       - run:
-          name: Get new version
+          name: Get new version of upcoming package
           command: node next.js
       - run:
           name: Setup new version to each package and publish to NPM
