@@ -1,6 +1,27 @@
 # Reference https://github.com/emotion-js/emotion/blob/master/.circleci/config.yml
 version: 2.1
 jobs:
+  download:
+    docker:
+      - image: circleci/node:14
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v4-dependencies-{{ checksum "yarn.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v4-dependencies-
+      - run: yarn install --pure-lockfile
+      - run:
+          name: Download isBurner data
+          command: node isBurner/tools/download.js
+      - run:
+          name: Download isBot data
+          command: node isBot/tools/download.js
+      - run:
+          name: Todo
+          command: echo "make this a chron job check number and bump"
   test:
     docker:
       - image: circleci/node:14
@@ -16,9 +37,6 @@ jobs:
       - run:
           name: Download isBot data
           command: node isBot/tools/download.js
-      - run:
-          name: Download isBurner data
-          command: node isBurner/tools/download.js
       - run:
           name: Ava Tests
           command: yarn test

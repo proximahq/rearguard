@@ -3,7 +3,7 @@ const dns = require('dns');
 const path = require('path');
 const {download} = require('../../utils');
 
-const MAX = 512;
+const MAX = 2048;
 const urls = [
   'https://raw.githubusercontent.com/wesbos/burner-email-providers/master/emails.txt',
   'https://gist.githubusercontent.com/adamloving/4401361/raw/temporary-email-address-domains',
