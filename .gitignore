@@ -11,6 +11,7 @@ debug
 coverage
 now-secrets.json
 release
+VERSION
 node_modules
 .rts*
 
