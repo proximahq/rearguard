@@ -7,7 +7,8 @@
   "scripts": {
     "test": "ava",
     "build": "echo noop",
-    "test:watch": "ava --watch --verbose --timeout=10s"
+    "test:watch": "ava --watch --verbose --timeout=10s",
+    "version": "yarn version --new-version $PACKAGE_VERSION --no-git-tag-version --no-commit-hooks"
   },
   "ava": {
     "require": [
