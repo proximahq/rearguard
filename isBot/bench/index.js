@@ -1,5 +1,5 @@
 const Benchmark = require('benchmark');
-const {isBot: vanguardIsBot} = require('../dist/index');
+const {isBot: rearguardIsBot} = require('../dist/index');
 const isBot = require('isbot');
 const isBotFast = require('isbot-fast');
 
@@ -8,12 +8,12 @@ const browsers = require('../fixtures/browsers');
 
 const suite = new Benchmark.Suite();
 suite
-  .add('vanguard@is-bot', function() {
+  .add('rearguard@is-bot', function() {
     crawlers.forEach(e => {
-      vanguardIsBot(e);
+      rearguardIsBot(e);
     });
     browsers.forEach(e => {
-      vanguardIsBot(e);
+      rearguardIsBot(e);
     });
   })
   .add('isBot', function() {
