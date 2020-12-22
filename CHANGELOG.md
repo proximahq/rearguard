@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/proximahq/rearguard/compare/v1.4.0...v1.4.1) (2020-12-22)
+
+
+### Bug Fixes
+
+* release process ([f9384f0](https://github.com/proximahq/rearguard/commit/f9384f0f0560e9c0cefeaf8bbb0d32f91c551a0c))
+
 ## [1.4.0](https://github.com/proximahq/rearguard/compare/v1.3.0...v1.4.0) (2020-12-22)
 
 
