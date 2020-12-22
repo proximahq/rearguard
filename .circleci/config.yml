@@ -80,7 +80,7 @@ jobs:
       - run:
           name: Setup new version to each package and publish to NPM
           command: |
-            PACKAGE_VERSION=$(cat VERSION | sed 's/ *$//g') && PACKAGE_VERSION=$PACKAGE_VERSION yarn workspaces run version && PACKAGE_VERSION=$PACKAGE_VERSION yarn workspaces run bump
+            PACKAGE_VERSION=$(cat VERSION | sed 's/ *$//g') && PACKAGE_VERSION=$PACKAGE_VERSION yarn workspaces run bump
       - run:
           name: Get new version, add git tags, releases and push
           command: |
