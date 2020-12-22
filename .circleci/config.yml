@@ -84,8 +84,7 @@ jobs:
       - run:
           name: Get new version, add git tags, releases and push
           command: |
-            yarn next
-            git push --follow-tags origin main
+            yarn next && git push --follow-tags origin main
 
 workflows:
   version: 2
