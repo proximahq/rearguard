@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/proximahq/rearguard/compare/v1.3.0...v1.4.0) (2020-12-22)
+
+
+### Features
+
+* add new burner list ([b58aba4](https://github.com/proximahq/rearguard/commit/b58aba4c833128be5cbbee6ce2b8f8e5927d912e))
+
+
+### Bug Fixes
+
+* dependencies & downloads with redirects ([d1ec34c](https://github.com/proximahq/rearguard/commit/d1ec34ccce37020f64ed77d3dc7bc4826c6c743e))
+
 ## 1.3.0 (2020-10-31)
 
 
