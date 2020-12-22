@@ -77,7 +77,10 @@ jobs:
       - run:
           name: Add changelog and stuff
           command: npx standard-version -a
-
+      - run:
+          name: Prepare releae
+          command: |
+            echo "> Prepare new release"
       - run:
           name: Setup new version to each package
           command: |
