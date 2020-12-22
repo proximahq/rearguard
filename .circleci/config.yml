@@ -75,16 +75,23 @@ jobs:
             - v4-dependencies-
       - run: yarn install --pure-lockfile
       - run:
-          name: Get new version of upcoming package
-          command: node next.js
+          name: Add changelog and stuff
+          command: npx standard-version -a
+
       - run:
-          name: Setup new version to each package and publish to NPM
+          name: Setup new version to each package
           command: |
-            PACKAGE_VERSION=$(cat VERSION | sed 's/ *$//g') && PACKAGE_VERSION=$PACKAGE_VERSION yarn workspaces run bump
+            PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && PACKAGE_VERSION=$PACKAGE_VERSION yarn workspaces run version
       - run:
-          name: Get new version, add git tags, releases and push
+          name: Publish to NPM
           command: |
-            yarn next && git push --follow-tags origin main
+            PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && PACKAGE_VERSION=$PACKAGE_VERSION yarn workspaces run bump
+      - run:
+          name: Add git tags, releases and push
+          command: |
+            git add .
+            git commit --amend --no-edit -n
+            git push --follow-tags origin main
 
 workflows:
   version: 2
