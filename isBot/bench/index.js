@@ -3,12 +3,15 @@ const {isBot: rearguardIsBot} = require('../dist/index');
 const isBot = require('isbot');
 const isBotFast = require('isbot-fast');
 
+const {readFileSync} = require('fs');
+const {join} = require('path');
+
 const crawlers = require('../fixtures/crawlers');
 const browsers = require('../fixtures/browsers');
 
 const suite = new Benchmark.Suite();
 suite
-  .add('rearguard@is-bot', function() {
+  .add('rearguard@is-bot', function () {
     crawlers.forEach(e => {
       rearguardIsBot(e);
     });
@@ -16,7 +19,7 @@ suite
       rearguardIsBot(e);
     });
   })
-  .add('isBot', function() {
+  .add('isBot', function () {
     crawlers.forEach(e => {
       isBot(e);
     });
@@ -24,7 +27,7 @@ suite
       isBot(e);
     });
   })
-  .add('isBot-fast', function() {
+  .add('isBot-fast', function () {
     crawlers.forEach(e => {
       isBotFast(e);
     });
@@ -38,7 +41,7 @@ suite
   .on('error', event => {
     console.log(event);
   })
-  .on('complete', function() {
+  .on('complete', function () {
     console.log('\nFastest is ' + this.filter('fastest').map('name'));
   })
   // run async

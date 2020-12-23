@@ -17,7 +17,7 @@ const liveCrawlers = read('../tmp/live_webcrawlers.txt')
 
 const generated = Array(10)
   .fill('')
-  .map(s => faker.internet.userAgent());
+  .map(() => faker.internet.userAgent());
 
 test('isBot passes generated browsers', t => {
   generated.forEach(ua => {
