@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/proximahq/rearguard/compare/v1.4.1...v1.6.0) (2020-12-23)
+
+
+### Features
+
+* skip a new version ([9d38b4a](https://github.com/proximahq/rearguard/commit/9d38b4af4e0e9060d337db8119690cb4bcfb8ec7))
+
+
+### Bug Fixes
+
+* building proper order ([745e9c3](https://github.com/proximahq/rearguard/commit/745e9c3a9e2a7e2d9d2aba261a96c7a7ccc42255))
+* come on npm ([caaa1ce](https://github.com/proximahq/rearguard/commit/caaa1cef32f897976b030fa5528f9efcb361dd49))
+* validate build step ([5afcc66](https://github.com/proximahq/rearguard/commit/5afcc667b4db7cd95f6b6d849b31ba073a16c792))
+
 ## [1.5.0](https://github.com/proximahq/rearguard/compare/v1.4.1...v1.5.0) (2020-12-22)
 
 
