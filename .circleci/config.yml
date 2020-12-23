@@ -53,6 +53,10 @@ jobs:
             git config user.name "Proxima Release Bot 🤖"
             git remote set-url origin https://${GITHUB_TOKEN}@github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}.git
       - run:
+          name: Build
+          command: |
+            echo "> Building" && yarn workspaces run build
+      - run:
           name: Release checking
           command: |
             LATEST_COMMIT=$(git log --oneline -n 1 HEAD)
