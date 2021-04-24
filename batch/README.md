@@ -18,6 +18,8 @@ const {batchLru} = require('@rearguard/batch');
 /**
  * max items: 2
  * ttl: 1000ms
+ * fn: callback
+ * timeout: timeout in order to release the resource
  */
 const batch = batchLru(2, 1000, items => {
   console.log(items);

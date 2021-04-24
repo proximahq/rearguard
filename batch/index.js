@@ -1,6 +1,6 @@
 const sigs = ['SIGINT', 'SIGTERM', 'SIGQUIT'];
 
-const batchLru = (max, ttl = 0, cb = () => {}) => {
+const batchLru = (max, ttl = 0, cb = () => {}, timeout = 1000) => {
   if (!max)
     throw Error('rearguard/batchLru  value, of type number, greater than 0');
 
