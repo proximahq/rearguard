@@ -1,6 +1,6 @@
 {
   "name": "@rearguard/is-email",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "A fast email checker.",
   "license": "MIT",
   "private": false,
