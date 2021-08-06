@@ -3,9 +3,13 @@ const dns = require('dns');
 const path = require('path');
 const {download} = require('../../utils');
 
-const MAX = 2048;
+const MAX = 16 * 16;
 const urls = [
   'https://raw.githubusercontent.com/wesbos/burner-email-providers/master/emails.txt',
+  'https://raw.githubusercontent.com/findie/burner-email-providers/master/emails.txt',
+  'https://raw.githubusercontent.com/justinlosh/burner-email-providers/master/full-list.txt',
+  'https://raw.githubusercontent.com/Xyborg/disposable-burner-email-providers/master/disposable-domains.txt',
+  'https://raw.githubusercontent.com/FugaCloud/email-domain-lists/master/burner-emails.txt',
   'https://gist.githubusercontent.com/adamloving/4401361/raw/temporary-email-address-domains',
   'https://gist.githubusercontent.com/michenriksen/8710649/raw/disposable-email-provider-domains',
 ];
@@ -17,7 +21,6 @@ const getAllFiles = () => {
         reject();
         return;
       }
-      console.log(files);
       const txtFiles = files.map(f => path.join(__dirname, '..', 'tmp', f));
       resolve(txtFiles);
     });
@@ -108,6 +111,8 @@ const asyncFilter = async (arr, predicate) =>
         }
         return b.isValid;
       });
+
+      console.log(`> Validated ${tmp.length} active addresses`);
       validBurners = validBurners.concat(tmp);
     }
 

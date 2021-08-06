@@ -8,9 +8,11 @@ const download = (url, pkg) => {
     let responseSent = false; // flag to make sure that response is sent only once.
     http
       .get(url, response => {
+        const _now = Date.now();
+        const tmpName = `${name}_${_now}`;
         if (response.statusCode >= 200 && response.statusCode < 300) {
           const file = fs.createWriteStream(
-            path.resolve(__dirname, pkg, 'tmp', `${name}.txt`),
+            path.resolve(__dirname, pkg, 'tmp', `${tmpName}.txt`),
             {flags: 'w'},
           );
           console.log(`> Validated download ${url}`);
@@ -21,7 +23,7 @@ const download = (url, pkg) => {
                 __dirname,
                 pkg,
                 'tmp',
-                `${name}.txt`,
+                `${tmpName}.txt`,
               )}`,
             );
             file.close(() => {
