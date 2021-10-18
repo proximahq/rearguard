@@ -1,11 +1,16 @@
 const fs = require('fs');
 const dns = require('dns');
 const path = require('path');
+const Queue = require('queue-promise');
 const {download} = require('../../utils');
 
-const MAX = 16 * 16;
+const MAX = 20 * 16 * 50 * 50;
+
+const queue = new Queue({concurrent: MAX, interval: Infinity});
+
 const urls = [
   'https://raw.githubusercontent.com/wesbos/burner-email-providers/master/emails.txt',
+  'https://raw.githubusercontent.com/fnando/email_data/main/data/disposable_domains.txt',
   'https://raw.githubusercontent.com/findie/burner-email-providers/master/emails.txt',
   'https://raw.githubusercontent.com/justinlosh/burner-email-providers/master/full-list.txt',
   'https://raw.githubusercontent.com/Xyborg/disposable-burner-email-providers/master/disposable-domains.txt',
@@ -49,12 +54,17 @@ const validateMx = domain => {
     dns.resolveMx(domain, (err, mx) => {
       if (typeof mx != 'undefined') {
         mx
-          ? resolve({isValid: true, mxArray: mx})
-          : resolve({isValid: false, mxArray: null});
+          ? resolve({isValid: true, domain, mxArray: mx})
+          : resolve({isValid: false, domain, mxArray: null});
       } else if (err.code == 'ENOTFOUND') {
-        resolve({isValid: false, mxArray: null, mxRecordSetExists: false});
+        resolve({
+          isValid: false,
+          domain,
+          mxArray: null,
+          mxRecordSetExists: false,
+        });
       } else {
-        resolve({isValid: false});
+        resolve({isValid: false, domain});
       }
     });
   });
@@ -65,6 +75,11 @@ const asyncFilter = async (arr, predicate) =>
     async (memo, e) => ((await predicate(e)) ? [...(await memo), e] : memo),
     [],
   );
+
+const isDone = () =>
+  new Promise((res, rej) => {
+    queue.on('end', () => res());
+  });
 
 (async () => {
   try {
@@ -88,33 +103,39 @@ const asyncFilter = async (arr, predicate) =>
       burners = Array.from(new Set(content.concat(burners)));
     });
 
+    burners = [...new Set(burners)];
     const originalsize = burners.length;
     console.log(`> Burners: ${originalsize}`);
 
     console.log(`> Validate active addresss`);
 
-    let size = 0;
-
+    let invalidSize = 0;
+    let validSize = 0;
     let tmp;
     let validBurners = [];
     let slice = [];
 
-    while (burners.length > 0) {
-      slice = burners.splice(0, MAX);
-      tmp = await asyncFilter(slice, async burn => {
-        size++;
-        if (size % MAX === 0) console.log(`${size}/${originalsize}`);
-        const b = await validateMx(burn);
-        if (!b.isValid) {
-          // Keep logs plain
-          // console.log(`'> Stale: ${burn}'`);
-        }
-        return b.isValid;
-      });
-
-      console.log(`> Validated ${tmp.length} active addresses`);
-      validBurners = validBurners.concat(tmp);
+    for (const burn of burners) {
+      queue.enqueue(() => validateMx(burn));
     }
+
+    queue.on('resolve', b => {
+      if (!b.isValid) {
+        invalidSize++;
+        // Keep logs plain
+      } else {
+        validBurners.push(b.domain);
+        validSize++;
+      }
+      console.clear();
+      console.log(
+        `Checked ${
+          validSize + invalidSize
+        }/${originalsize}  (valid: ${validSize})`,
+      );
+    });
+
+    await isDone();
 
     console.log('> Done validating mx');
 
