@@ -29,7 +29,7 @@ const download = (url, pkg) => {
             file.close(() => {
               if (responseSent) return;
               responseSent = true;
-              resolve();
+              resolve(tmpName);
             });
           });
         } else if (response.headers.location) {

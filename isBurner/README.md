@@ -17,7 +17,6 @@ const {isBurner} = require('@rearguard/is-burner');
 
 isBurner('test@gmail.com'); // false
 isBurner('test@yahoo.com'); // false
-isBurner('bar@22pesok.ru'); // true
 isBurner('test@zapzap.rent'); // true
 ```
 

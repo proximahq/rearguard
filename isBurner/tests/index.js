@@ -8,7 +8,6 @@ test('isBurner', t => {
 
   t.truthy(isBurner('hello@email60.com'));
   t.truthy(isBurner('foo@guerrillamail.biz'));
-  t.truthy(isBurner('bar@22pesok.ru'));
-  t.truthy(isBurner('bar@ahcsolicitors.co.uk'));
-  t.truthy(isBurner('test@zapzap.rent'));
+  t.truthy(isBurner('baz@75hosting.net'));
+  t.truthy(isBurner('baz+432@bsnow.net'));
 });
