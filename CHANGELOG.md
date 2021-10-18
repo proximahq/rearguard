@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/proximahq/rearguard/compare/v1.4.1...v1.8.0) (2021-10-18)
+
+
+### Features
+
+* add typings and update email list ([1d2f697](https://github.com/proximahq/rearguard/commit/1d2f697e9c6241fe31f81ccaa3ec70b385c8ba2a))
+* skip a new version ([9d38b4a](https://github.com/proximahq/rearguard/commit/9d38b4af4e0e9060d337db8119690cb4bcfb8ec7))
+* update burner list ([aececde](https://github.com/proximahq/rearguard/commit/aececde1a7cc9c5f6ab94fccfa41690604314dbf))
+
+
+### Bug Fixes
+
+* better `isBot` coverage ([82dc2e8](https://github.com/proximahq/rearguard/commit/82dc2e8385548c1dd86e09d4fcb0dc0d4ea96bae))
+* building proper order ([745e9c3](https://github.com/proximahq/rearguard/commit/745e9c3a9e2a7e2d9d2aba261a96c7a7ccc42255))
+* come on npm ([caaa1ce](https://github.com/proximahq/rearguard/commit/caaa1cef32f897976b030fa5528f9efcb361dd49))
+* live crawlers tests ([048de4a](https://github.com/proximahq/rearguard/commit/048de4a78da0c2821fc1b8a3e644c93394c68349))
+* missing `batch` timeout ([83b093f](https://github.com/proximahq/rearguard/commit/83b093fb9a2862a88152d16bcf1f628b3ef3cd99))
+* upgrade actions ([d22ba0b](https://github.com/proximahq/rearguard/commit/d22ba0b5bdda81a29ee8a5abc7bca587b9acfa89))
+* validate build step ([5afcc66](https://github.com/proximahq/rearguard/commit/5afcc667b4db7cd95f6b6d849b31ba073a16c792))
+
 ### [1.7.1](https://github.com/proximahq/rearguard/compare/v1.7.0...v1.7.1) (2021-04-24)
 
 ## [1.7.0](https://github.com/proximahq/rearguard/compare/v1.4.0...v1.7.0) (2021-04-24)

@@ -1,6 +1,6 @@
 {
   "name": "@rearguard/is-bot",
-  "version": "1.7.1",
+  "version": "1.8.0",
   "description": "Ultra fast bot/crawler detector using user agent strings.",
   "license": "MIT",
   "private": false,
