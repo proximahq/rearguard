@@ -49,6 +49,9 @@ jobs:
             echo "Proceed. Prepare a new release"
           fi
 
+      - name: Add changelog and stuff
+        run: npx standard-version -a
+
       - name: Setup new version to each package
         run: |
           PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && PACKAGE_VERSION=$PACKAGE_VERSION yarn workspaces run version
