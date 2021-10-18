@@ -1,0 +1,64 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+      - next
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: NPM setup
+        run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - name: Setup Node.js 14.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install Yarn
+        run: npm install --global yarn
+
+      - name: Install Dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Run tests
+        run: yarn test
+
+      - name: Setup bot
+        run: |
+          git config user.email "github-bot@proxima.so"
+          git config user.name "Proxima Release Bot 🤖"
+
+      - name: Release checking
+        run: |
+          LATEST_COMMIT=$(git log --oneline -n 1 HEAD)
+          COMMIT_REGEX="(develop|staging|release|ci)"
+          if [[ $LATEST_COMMIT =~ $COMMIT_REGEX ]]; then
+              echo "This is a release or maintainance, kill this one!"
+              exit 1
+          else
+            echo "Proceed. Prepare a new release"
+          fi
+
+      - name: Setup new version to each package
+        run: |
+          PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && PACKAGE_VERSION=$PACKAGE_VERSION yarn workspaces run version
+
+      - name: Publish to NPM
+        run: |
+          PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && PACKAGE_VERSION=$PACKAGE_VERSION yarn workspaces run bump
+
+      - name: Add git tags, releases and push
+        run: |
+          git add .
+          git commit --amend --no-edit -n
+          git push --follow-tags origin main
