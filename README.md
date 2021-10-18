@@ -17,7 +17,7 @@ Rearguard exposes different libraries as individual, standalone packages.
 
 ## Installation.
 
-Each package can get installed individually using NPM, eg:
+Each package can get installed individually using NPM, as:
 
 ```bash
   npm i @rearguard/batch
