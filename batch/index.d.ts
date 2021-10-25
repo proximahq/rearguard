@@ -22,8 +22,10 @@ declare function batchLru(
   ttl: number,
   callback: (items: JsonArray) => void,
   timeout?: number,
-): {add: (item: value) => void};
+): {
+  add: (item: value) => void;
+};
 
 // EXPORTS //
 
-export = {batchLru};
+export = batchLru;
