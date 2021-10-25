@@ -1,7 +1,7 @@
 declare function batchLru(
   maxItems: number,
   ttl: number,
-  callback: () => void,
+  callback: (any) => any,
   timeout?: number,
 ): boolean;
 
