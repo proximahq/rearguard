@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.9.2](https://github.com/proximahq/rearguard/compare/v1.9.0...v1.9.2) (2021-10-25)
+
+
+### Bug Fixes
+
+* add typings for add in batch ([e2cc4de](https://github.com/proximahq/rearguard/commit/e2cc4de43b046f6534115331b587e84ff77c80a2))
+* batch exports ([db5b1ec](https://github.com/proximahq/rearguard/commit/db5b1ece7dd9f5637cce64999c36e288294d64ed))
+
 ### [1.9.1](https://github.com/proximahq/rearguard/compare/v1.9.0...v1.9.1) (2021-10-25)
 
 

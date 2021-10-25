@@ -1,6 +1,6 @@
 {
   "name": "@rearguard/batch",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "description": "A batch release \"cache\".",
   "license": "MIT",
   "private": false,
