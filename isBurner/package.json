@@ -1,6 +1,6 @@
 {
   "name": "@rearguard/is-burner",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "description": "A fast email burner checker.",
   "license": "MIT",
   "private": false,
