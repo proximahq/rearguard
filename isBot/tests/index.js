@@ -1,6 +1,6 @@
 import test from 'ava';
 import {download} from '../../utils';
-import {isBot} from '../src';
+import isBot from '../src';
 import faker from 'faker';
 
 import {readFileSync} from 'fs';

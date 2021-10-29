@@ -1,5 +1,5 @@
 import test from 'ava';
-import {isEmail} from '../src';
+import isEmail from '../src';
 
 test('isEmail', t => {
   const longemail = new Array(255).fill('a').join();

@@ -1,5 +1,5 @@
 import test from 'ava';
-import {isBurner} from '../src';
+import isBurner from '../src';
 
 test('isBurner', t => {
   t.falsy(isBurner(''));
