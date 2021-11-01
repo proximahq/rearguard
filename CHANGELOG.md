@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.9.6](https://github.com/proximahq/rearguard/compare/v1.9.0...v1.9.6) (2021-11-01)
+
+
+### Bug Fixes
+
+* add typings for add in batch ([e2cc4de](https://github.com/proximahq/rearguard/commit/e2cc4de43b046f6534115331b587e84ff77c80a2))
+* batch export ([f356637](https://github.com/proximahq/rearguard/commit/f356637cb1fa6fc900a8213a2ce8f93761b9f384))
+* batch exports ([db5b1ec](https://github.com/proximahq/rearguard/commit/db5b1ece7dd9f5637cce64999c36e288294d64ed))
+* building and publishing ([db0b59e](https://github.com/proximahq/rearguard/commit/db0b59e26fbc2e3d3e56d64c4e9a2156a6bd73fb))
+* exports from helpers ([fd448d6](https://github.com/proximahq/rearguard/commit/fd448d6dbef8e7afc3edc48404207e6a6fc618b6))
+* types and exports for burner ([d8529d5](https://github.com/proximahq/rearguard/commit/d8529d5bcb94de7252c0b8f9b2f274b5f4a86174))
+
 ### [1.9.5](https://github.com/proximahq/rearguard/compare/v1.9.0...v1.9.5) (2021-11-01)
 
 
