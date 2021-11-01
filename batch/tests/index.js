@@ -1,5 +1,5 @@
 import test from 'ava';
-import {batchLru} from '../';
+import batchLru from '../';
 
 const wait = ms =>
   new Promise(resolve => {

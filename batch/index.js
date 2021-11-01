@@ -55,4 +55,4 @@ const batchLru = (max, ttl = 0, cb = () => {}, timeout = 1000) => {
   };
 };
 
-module.exports = {batchLru};
+module.exports = batchLru;
