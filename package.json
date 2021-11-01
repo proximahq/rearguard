@@ -9,8 +9,8 @@
   "workspaces": [
     "isBurner",
     "isEmail",
-    "batch",
-    "isBot"
+    "isBot",
+    "batch"
   ],
   "scripts": {
     "test": "yarn workspaces run test",
